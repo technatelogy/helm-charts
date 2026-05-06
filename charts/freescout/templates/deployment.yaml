@@ -121,21 +121,25 @@ spec:
             httpGet:
               path: /login
               port: http
-              {{- if .Values.freescout.enable_ssl_proxy }}
               httpHeaders:
+                - name: Host
+                  value: {{ index ( .Values.freescout.site_url | split "/") "_2" }}
+                {{- if .Values.freescout.enable_ssl_proxy }}
                 - name: X-Forwarded-Proto
                   value: https
-              {{- end }}
+                {{- end }}
           readinessProbe:
             initialDelaySeconds: 20
             httpGet:
               path: /login
               port: http
-              {{- if .Values.freescout.enable_ssl_proxy }}
               httpHeaders:
+                - name: Host
+                  value: {{ index (.Values.freescout.site_url | split "/") "_2" }}
+                {{- if .Values.freescout.enable_ssl_proxy }}
                 - name: X-Forwarded-Proto
                   value: https
-              {{- end }}
+                {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
