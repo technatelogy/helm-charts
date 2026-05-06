@@ -13,5 +13,5 @@ spec:
       command: ['wget']
       args:
         - '--header=Host: {{ index (.Values.freescout.site_url | split "/") "_2" }}'
-        - '{{ include "freescout.fullname" . }}:{{ .Values.service.port }}'
+        - '{{ include "freescout.fullname" . }}:{{ .Values.service.port }}/login'
   restartPolicy: Never
