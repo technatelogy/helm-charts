@@ -108,7 +108,7 @@ spec:
           - name: ENABLE_SSL_PROXY
             value: {{ .Values.freescout.enable_ssl_proxy | quote }}
           - name: SITE_URL
-            value: {{ .Values.freescout.site_url | quote }}
+            value: {{ required "freescout.site_url is required" .Values.freescout.site_url | quote }}
           {{- if .Values.extraEnv }}
             {{- toYaml .Values.extraEnv | nindent 10 }}
           {{- end }}
