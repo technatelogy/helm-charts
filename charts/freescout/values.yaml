@@ -156,6 +156,8 @@ freescoutConfig: {}
 persistence:
   enabled: false
   annotations: {}
+  # Extra labels for the PVC, e.g. to select it for backup jobs.
+  labels: {}
   ## freescout data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
