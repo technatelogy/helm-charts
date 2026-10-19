@@ -6,8 +6,8 @@ maintainers:
   - name: Zoran Zorica
     email: zzorica@soultrace.net
 type: application
-version: 1.1.0
-appVersion: "2.2.10"
+version: 1.1.1
+appVersion: "2.2.19"
 dependencies:
   - name: mariadb
     version: ~11.x
