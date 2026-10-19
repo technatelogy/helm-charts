@@ -10,6 +10,9 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/component: app
+{{- if .Values.persistence.labels }}
+{{ toYaml .Values.persistence.labels | indent 4 }}
+{{- end }}
 {{- if .Values.persistence.annotations }}
   annotations:
 {{ toYaml .Values.persistence.annotations | indent 4 }}

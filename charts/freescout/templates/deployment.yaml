@@ -39,6 +39,13 @@ spec:
             {{- else }}
             value: {{ .Values.externalDatabase.host | quote }}
             {{- end }}
+          {{- if not .Values.mariadb.enabled }}
+          # db_alive only takes a host; mysqladmin and pg_isready read the port from these
+          - name: MYSQL_TCP_PORT
+            value: {{ .Values.externalDatabase.port | quote }}
+          - name: PGPORT
+            value: {{ .Values.externalDatabase.port | quote }}
+          {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
